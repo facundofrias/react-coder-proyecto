@@ -13,7 +13,7 @@ const NavBar = () => {
               <img className="logo" src={logoImg} alt="Logo" />
               <div className="brand-name-container">
                 <span className="brand-name">Digital</span>
-                <span className="brand-name">Shop</span>
+                <span className="brand-name">Books</span>
               </div>
             </a>
             <div className="categories">
