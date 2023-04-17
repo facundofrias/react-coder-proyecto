@@ -1,32 +1,5 @@
-import { useEffect, useState } from "react";
-import ItemCount from "../ItemCount/itemCount";
-
-const useItem = (itemId) => {
-  const [item, setItem] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setTimeout(async () => { // Agregamos un timeout de 2 segundos
-        try {
-          const response = await fetch('/products.json', { timeout: 2000 });
-          const data = await response.json();
-          const foundItem = data.find(product => product.id == itemId);
-          setItem(foundItem);
-        } catch (error) {
-          console.log('Error fetching data', error);
-        }
-      }, 2000);
-    };
-    fetchData();
-  }, [itemId]);
-
-  useEffect(() => {
-    console.log('Item:', item);
-  }, [item]);
-
-  return item;
-};
-
+import ItemDetail from "../ItemDetail/itemDetail";
+import useItem from "./useItem"
 
 const ItemDetailContainer = ({ itemId }) => {
   const item = useItem(itemId);
@@ -34,18 +7,12 @@ const ItemDetailContainer = ({ itemId }) => {
   return (
     <div className="item-datail-container">
       {item ? (
-        <div>
-          <img src={item.pictureURL} alt="" />
-          <p>{item.title}</p>
-          <p>{item.description}</p>
-          <p>{`Unidades disponibles: ${item.stock}`}</p>
-          <ItemCount stock={item.stock} initial={1}/>
-        </div>
+        <ItemDetail item={item}/>
       ) : (
         <p>Cargando item...</p>
       )}
     </div>
-  );
-};
+  );  
+}
 
-export default ItemDetailContainer;
+export default ItemDetailContainer
