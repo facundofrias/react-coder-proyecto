@@ -29,8 +29,7 @@ const ItemList = () => {
                 title = {product.title}
                 stock = {`Stock: ${product.stock}`} />
               </li>
-            ) 
-
+              )
             )
           }
         </ul>
