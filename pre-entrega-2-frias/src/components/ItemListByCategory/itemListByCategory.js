@@ -23,6 +23,7 @@ const ItemListByCategory = () => {
   const productsByCategory = products.filter(
     (product) => product.categoryURL === categoryURL
   );
+  localStorage.setItem("prevURL", window.location.href);
   return (
     <div className="main">
       <NavBar/>
