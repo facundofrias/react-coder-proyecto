@@ -18,12 +18,12 @@ const ItemList = () => {
 
   return (
       <div>
-        <h1>Lista productos</h1>
         <ul>
           {
             products.map((product) => (
               <li key={product.id}>
                 <Item 
+                id={product.id}
                 category={`Cat: ${product.category} `}
                 pictureURL = {product.pictureURL}
                 title = {product.title}
