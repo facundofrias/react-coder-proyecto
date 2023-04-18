@@ -21,7 +21,6 @@ const ItemListByCategory = ( { category } ) => {
     product.category == category ? console.log("Valido") : console.log("NO valido");
    }
   )
-  console.log("Largo: "+products.length)
 }
 
 
