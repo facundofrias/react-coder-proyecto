@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Item from "../Item/item"
 
+// Estilos
+import "./itemList.css";
+
 const ItemList = () => {
   const [products, setProducts] = useState([]);
 
@@ -17,22 +20,18 @@ const ItemList = () => {
   }, []);
 
   return (
-      <div>
-        <ul>
-          {
-            products.map((product) => (
-              <li key={product.id}>
-                <Item 
-                id={product.id}
-                category={`Categoría: ${product.category} `}
-                pictureURL = {product.pictureURL}
-                title = {product.title}
-                stock = {`Stock: ${product.stock}`} />
-              </li>
-              )
+      <div className="items-container">
+        {
+          products.map((product) => (
+            <Item 
+            id={product.id}
+            category={`Categoría: ${product.category} `}
+            pictureURL = {product.pictureURL}
+            title = {product.title}
+            stock = {`Stock: ${product.stock}`} />
             )
-          }
-        </ul>
+          )
+        }
       </div>
     )
 }

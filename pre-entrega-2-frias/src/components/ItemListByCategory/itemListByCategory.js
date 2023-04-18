@@ -25,29 +25,25 @@ const ItemListByCategory = () => {
   );
   return (
     <div className="main">
-    <NavBar/>
-      <div>
-        {productsByCategory.length === 0 ? (
-          <p>Cargando productos...</p>
-        ) : (
-          <div>
+      <NavBar/>
+      {productsByCategory.length === 0 ? (
+        <p>Cargando productos...</p>
+      ) : (
+        <div>
+          <h3>{`Categoría: ${productsByCategory[0].category}`}</h3>
+          <h4>Productos:</h4>
+          <div className="items-container">
             {productsByCategory.map((product) => (
-              <ul>
-                <h3>{`Categoría: ${product.category}`}</h3>
-                <h4>Productos:</h4>
-                <li key={product.id}>
-                  <Item
-                    id={product.id}
-                    pictureURL={product.pictureURL}
-                    title={product.title}
-                    stock={`Stock: ${product.stock}`}
-                  />
-                </li>
-              </ul>
+              <Item
+                id={product.id}
+                pictureURL={product.pictureURL}
+                title={product.title}
+                stock={`Stock: ${product.stock}`}
+              />
             ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

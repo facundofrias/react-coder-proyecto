@@ -1,0 +1,12 @@
+.item-container {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid black;
+  width: 150px;
+  height: 370px;
+}
+
+.picture {
+  margin: 7px;
+  width: 100px;
+}

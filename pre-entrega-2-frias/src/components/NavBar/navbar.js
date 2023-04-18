@@ -9,18 +9,23 @@ import CartWidget from "../CartWidget/cartWidget";
 import logoImg from "../../assets/img/DigitalShop.png";
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  
   const showCategoriesMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
+  
   const navigate = useNavigate();
-
+  
   const goToCategory = (categoryURL) => {
     navigate(`/category/${categoryURL}`);
   }
+  
+  const goHome = () => {
+    navigate("/");
+  }
+  
   return  <div className="navbar">
-            <a className="brand-container" href="">
+            <a className="brand-container" onClick={goHome}>
               <img className="logo" src={logoImg} alt="Logo" />
               <div className="brand-name-container">
                 <span className="brand-name">Digital</span>

@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
-ul {
+a:hover {
+  cursor: pointer;
+}
+
+ul, li {
   list-style: none;
 }

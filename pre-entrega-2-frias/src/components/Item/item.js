@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import ItemDetailContainer from "../ItemDetailContainer/itemDetailContainer";
+
+import "./item.css";
 
 const Item = ({id, category, pictureURL, title, stock}) => {
   const navigate = useNavigate();
@@ -8,9 +9,9 @@ const Item = ({id, category, pictureURL, title, stock}) => {
     navigate(`/item-details/${id}`);
   }
   return (
-    <div>
+    <div className='item-container'>
       <p>{category}</p>
-      <img src={pictureURL} alt="Book picture" />
+      <img className='picture' src={pictureURL} alt="Book picture" />
       <p>{title}</p>
       <button onClick={goToItemDetails}>Ver detalles</button>
       <p>{stock}</p>
