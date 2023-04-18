@@ -20,12 +20,24 @@
   flex-direction: column;
 }
 
-.categories a {
+.nav-menu a {
+  font-weight: 500;
   padding: 0 14px;
   transition: 170ms ease-in-out;
 }
 
-.categories a:hover,
-.brand-container:hover {
+.nav-menu a:hover,
+.brand-container:hover, 
+.categories-item:hover {
   color: #FC6700;
+}
+
+.categories-container {
+  text-align: left;
+}
+
+.categories, 
+.categories-item {
+  cursor: pointer;
+  padding: 0 14px;
 }
