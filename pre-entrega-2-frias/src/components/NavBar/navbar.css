@@ -20,7 +20,7 @@
   flex-direction: column;
 }
 
-.nav-menu a {
+.menu-item {
   font-weight: 500;
   padding: 0 14px;
   transition: 170ms ease-in-out;
@@ -40,4 +40,8 @@
 .categories-item {
   cursor: pointer;
   padding: 0 14px;
+}
+
+.categories-item:hover {
+  font-weight: 500;
 }

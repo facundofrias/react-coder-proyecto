@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 // Imports
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
@@ -16,10 +17,6 @@ const NavBar = () => {
   
   const navigate = useNavigate();
   
-  const goToCategory = (categoryURL) => {
-    navigate(`/category/${categoryURL}`);
-  }
-  
   const goHome = () => {
     navigate("/");
   }
@@ -33,19 +30,19 @@ const NavBar = () => {
               </div>
             </a>
             <div className="nav-menu">
-              <a href="">Ofertas</a>
-              <a href="">Vender</a>
-              <a href="">Ayuda</a>
+              <a className="menu-item" href="">Ofertas</a>
+              <a className="menu-item" href="">Vender</a>
+              <a className="menu-item" href="">Ayuda</a>
               <CartWidget />
               <div className="categories-container">
-                <a className="categories"
+                <a className="categories menu-item"
                 onClick={showCategoriesMenu}>Categorías</a>
                 { menuOpen && (
                   <ul className="categories-menu">
-                    <li className="categories-item" onClick={() => goToCategory("ciencia_ficcion") }>Ciencia Fincción</li>
-                    <li className="categories-item" onClick={() => goToCategory("fantasia") }>Fantasía</li>
-                    <li className="categories-item" onClick={() => goToCategory("clasicos") }>Clásicos</li>
-                    <li className="categories-item" onClick={() => goToCategory("infantil") }>Infantil</li>
+                    <li><Link className="categories-item" to="/category/ciencia_ficcion">Ciencia Ficción</Link></li>
+                    <li><Link className="categories-item" to="/category/fantasia">Fantasía</Link></li>
+                    <li><Link className="categories-item" to="/category/clasicos">Clásicos</Link></li>
+                    <li><Link className="categories-item" to="/category/infantil">Infantil</Link></li>
                   </ul>
                   )
                 }
