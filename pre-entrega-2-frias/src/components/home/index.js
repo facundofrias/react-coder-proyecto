@@ -1,7 +1,5 @@
 import NavBar from "../NavBar/navbar";
 import ItemListContainer from "../ItemListContainer/itemListContainer";
-import ItemList from "../ItemList/itemList";
-import ItemListByCategory from "../ItemListByCategory/itemListByCategory";
 
 localStorage.setItem("prevURL", window.location.href);
 

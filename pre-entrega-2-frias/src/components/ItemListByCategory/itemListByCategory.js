@@ -30,7 +30,7 @@ const ItemListByCategory = () => {
       {productsByCategory.length === 0 ? (
         <p>Cargando productos...</p>
       ) : (
-        <div>
+        <>
           <h3>{`Categoría: ${productsByCategory[0].category}`}</h3>
           <h4>Productos:</h4>
           <div className="items-container">
@@ -43,7 +43,7 @@ const ItemListByCategory = () => {
               />
             ))}
           </div>
-        </div>
+        </>
       )}
     </div>
   );

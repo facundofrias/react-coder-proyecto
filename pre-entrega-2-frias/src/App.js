@@ -6,9 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Components
 import Home from "./components/home";
-import NavBar from "./components/NavBar/navbar";
-import ItemListContainer from "./components/ItemListContainer/itemListContainer";
-import ItemList from "./components/ItemList/itemList";
 import ItemDetailContainer from "./components/ItemDetailContainer/itemDetailContainer";
 import ItemListByCategory from "./components/ItemListByCategory/itemListByCategory";
 

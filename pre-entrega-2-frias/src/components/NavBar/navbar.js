@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 // Imports
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 // Estilos
 import "./navbar.css";
 
@@ -15,20 +14,14 @@ const NavBar = () => {
     setMenuOpen(!menuOpen);
   };
   
-  const navigate = useNavigate();
-  
-  const goHome = () => {
-    navigate("/");
-  }
-  
   return  <div className="navbar">
-            <a className="brand-container" onClick={goHome}>
+            <Link className="brand-container" to="/">
               <img className="logo" src={logoImg} alt="Logo" />
               <div className="brand-name-container">
                 <span className="brand-name">Digital</span>
                 <span className="brand-name">Books</span>
               </div>
-            </a>
+            </Link>
             <div className="nav-menu">
               <a className="menu-item" href="">Ofertas</a>
               <a className="menu-item" href="">Vender</a>
