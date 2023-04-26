@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "title": "1984",
+    "description": "Novela de ficción distópica que presenta un futuro en el que una sociedad totalitaria controla cada aspecto de la vida de las personas.",
+    "price": 450,
+    "pictureURL": "https://picsum.photos/id/1018/200/300",
+    "category": "Ciencia ficción",
+    "categoryURL": "ciencia_ficcion",
+    "stock": 14
+  },
+  {
+    "id": 2,
+    "title": "La guerra de los mundos",
+    "description": "Novela de ciencia ficción que relata una invasión alienígena en la Tierra.",
+    "price": 550,
+    "pictureURL": "https://picsum.photos/id/1025/200/300",
+    "category": "Ciencia ficción",
+    "categoryURL": "ciencia_ficcion",
+    "stock": 7
+  },
+  {
+    "id": 3,
+    "title": "La isla del doctor Moreau",
+    "description": "Novela de ciencia ficción que aborda temas como la manipulación genética y la ética científica.",
+    "price": 600,
+    "pictureURL": "https://picsum.photos/id/1037/200/300",
+    "category": "Ciencia ficción",
+    "categoryURL": "ciencia_ficcion",
+    "stock": 23
+  },
+  {
+    "id": 4,
+    "title": "El nombre de la rosa",
+    "description": "Novela histórica y de misterio que transcurre en una abadía medieval.",
+    "price": 500,
+    "pictureURL": "https://picsum.photos/id/1040/200/300",
+    "category": "Clásicos",
+    "categoryURL": "clasicos",
+    "stock": 10
+  },
+  {
+    "id": 5,
+    "title": "Cien años de soledad",
+    "description": "Novela considerada un clásico de la literatura latinoamericana, que cuenta la historia de la familia Buendía a lo largo de varias generaciones.",
+    "price": 650,
+    "pictureURL": "https://picsum.photos/id/1043/200/300",
+    "category": "Clásicos",
+    "categoryURL": "clasicos",
+    "stock": 19
+  },
+  {
+    "id": 6,
+    "title": "El Señor de los Anillos: La comunidad del anillo",
+    "description": "Primera parte de la trilogía de fantasía épica de J.R.R. Tolkien, que sigue las aventuras de un hobbit llamado Frodo en su búsqueda por destruir un anillo mágico.",
+    "price": 700,
+    "pictureURL": "https://picsum.photos/id/1045/200/300",
+    "category": "Fantasía",
+    "categoryURL": "fantasia",
+    "stock": 8
+  },
+  {
+    "id": 7,
+    "title": "Harry Potter y la piedra filosofal",
+    "description": "Primera novela de la serie de fantasía de J.K. Rowling, que sigue las aventuras de un joven mago llamado Harry Potter.",
+    "price": 550,
+    "pictureURL": "https://picsum.photos/id/1050/200/300",
+    "category": "Fantasía",
+    "categoryURL": "fantasia",
+    "stock": 11
+  },
+  {
+    "id": 8,
+    "title": "Los juegos del hambre",
+    "description": "Novela de ciencia ficción distópica que presenta una sociedad dividida en distintos distritos que participan en unos juegos mortales para entretener a la élite del Capitolio.",
+    "price": 650,
+    "pictureURL": "https://picsum.photos/id/1059/200/300",
+    "category": "Ciencia ficción",
+    "categoryURL": "ciencia_ficcion",
+    "stock": 18
+  },
+  {
+    "id": 9,
+    "title": "El código Da Vinci",
+    "description": "Novela de misterio que sigue las aventuras del profesor de simbología Robert Langdon en la búsqueda del Santo Grial.",
+    "price": 550,
+    "pictureURL": "https://picsum.photos/id/1062/200/300",
+    "category": "Clásicos",
+    "categoryURL": "clasicos",
+    "stock": 5
+  },
+  {
+    "id": 10,
+    "title": "Matar a un ruiseñor",
+    "description": "Novela de ficción que aborda temas como el racismo y la injusticia en una pequeña ciudad de Alabama en los años 30.",
+    "price": 450,
+    "pictureURL": "https://picsum.photos/id/1064/200/300",
+    "category": "Clásicos",
+    "categoryURL": "clasicos",
+    "stock": 22
+  },
+  {
+    "id": 11,
+    "title": "La historia interminable",
+    "description": "Novela de fantasía que sigue las aventuras de un joven llamado Bastian al descubrir un libro mágico que le permite viajar a un mundo fantástico.",
+    "price": 700,
+    "pictureURL": "https://picsum.photos/id/1071/200/300",
+    "category": "Fantasía",
+    "categoryURL": "fantasia",
+    "stock": 13
+  },
+  {
+    "id": 12,
+    "title": "Las crónicas de Narnia: El león, la bruja y el armario",
+    "description": "Primera novela de la serie de fantasía de C.S. Lewis, que sigue las aventuras de cuatro hermanos en un mundo mágico llamado Narnia.",
+    "price": 650,
+    "pictureURL": "https://picsum.photos/id/1072/200/300",
+    "category": "Fantasía",
+    "categoryURL": "fantasia",
+    "stock": 21
+  },
+  {
+    "id": 13,
+    "title": "El principito",
+    "description": "Novela corta que presenta las aventuras de un pequeño príncipe en su viaje por distintos planetas y su amistad con un aviador.",
+    "price": 400,
+    "pictureURL": "https://picsum.photos/id/1074/200/300",
+    "category": "Infantil",
+    "categoryURL": "infantil",
+    "stock": 6
+  },
+  {
+    "id": 14,
+    "title": "Charlie y la fábrica de chocolate",
+    "description": "Novela infantil que sigue las aventuras de Charlie Bucket en la fábrica de chocolate del excéntrico Willy Wonka.",
+    "price": 450,
+    "pictureURL": "https://picsum.photos/id/1079/200/300",
+    "category": "Infantil",
+    "categoryURL": "infantil",
+    "stock": 16
+  },
+  {
+    "id": 15,
+    "title": "La princesa prometida",
+    "description": "Una historia de amor y aventuras en un mundo de fantasía.",
+    "price": 315,
+    "pictureURL": "https://picsum.photos/200/300/?image=1015",
+    "category": "Fantasía",
+    "categoryURL": "fantasia",
+    "stock": 9
+  },
+  {
+    "id": 16,
+    "title": "Fahrenheit 451",
+    "description": "Una novela de ciencia ficción de Ray Bradbury que presenta una sociedad donde los libros están prohibidos y son quemados por los bomberos.",
+    "price": 310,
+    "pictureURL": "https://picsum.photos/200/300?random=16",
+    "category": "Ciencia ficción",
+    "categoryURL": "ciencia_ficcion",
+    "stock": 17
+  },
+  {
+    "id": 17,
+    "title": "El nombre del viento",
+    "description": "Una novela de fantasía de Patrick Rothfuss que sigue la vida de Kvothe, un hombre que escribe su biografía para revelar la verdad detrás de los rumores que rodean su leyenda.",
+    "price": 320,
+    "pictureURL": "https://picsum.photos/200/300?random=17",
+    "category": "Fantasía",
+    "categoryURL": "fantasia",
+    "stock": 20
+  },
+  {
+    "id": 18,
+    "title": "Los tres mosqueteros",
+    "description": "Un clásico de aventuras y espadas en la Francia del siglo XVII.",
+    "price": 295,
+    "pictureURL": "https://picsum.photos/200/300/?image=1018",
+    "category": "Clásicos",
+    "categoryURL": "clasicos",
+    "stock": 12
+  },
+  {
+    "id": 19,
+    "title": "Don Quijote de la Mancha",
+    "description": "Una obra clásica de Miguel de Cervantes que sigue las aventuras de un hidalgo español que se vuelve loco después de leer demasiados libros de caballería.",
+    "price": 280,
+    "pictureURL": "https://picsum.photos/200/300?random=19",
+    "category": "Clásicos",
+    "categoryURL": "clasicos",
+    "stock": 15
+  },
+  {
+    "id": 20,
+    "title": "El fin de la eternidad",
+    "description": "Una novela de ciencia ficción de Isaac Asimov que sigue a un grupo de viajeros en el tiempo que intentan cambiar el curso de la historia humana.",
+    "price": 300,
+    "pictureURL": "https://picsum.photos/200/300?random=20",
+    "category": "Ciencia ficción",
+    "categoryURL": "ciencia_ficcion",
+    "stock": 5
+  }
+]

@@ -1,0 +1,47 @@
+.navbar{
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.brand-container  {
+  display: flex;
+  transition: 170ms ease-in-out;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.brand-name-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  font-weight: 500;
+  padding: 0 14px;
+  transition: 170ms ease-in-out;
+}
+
+.nav-menu a:hover,
+.brand-container:hover, 
+.categories-item:hover {
+  color: #FC6700;
+}
+
+.categories-container {
+  text-align: left;
+}
+
+.categories, 
+.categories-item {
+  cursor: pointer;
+  padding: 0 14px;
+}
+
+.categories-item:hover {
+  font-weight: 500;
+}
