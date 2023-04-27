@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import ItemDetailContainer from "./components/ItemDetailContainer/itemDetailContainer";
 import ItemListByCategory from "./components/ItemListByCategory/itemListByCategory";
+import { useState } from "react";
 
 function App() {
   return (

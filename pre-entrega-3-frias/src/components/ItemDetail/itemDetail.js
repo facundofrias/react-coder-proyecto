@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import "./itemDetail.css"
 
 const ItemDetail = ({ item }) => {
+
   return (
     <div>
       <img src={item.pictureURL} alt="Book picture" />
