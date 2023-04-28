@@ -1,5 +1,5 @@
 .navbar{
-  padding: 7px 0;
+  height: 70px;
   display: flex;
   align-items: center;
   background-color: antiquewhite;
@@ -39,9 +39,17 @@
 .categories, 
 .categories-item {
   cursor: pointer;
-  padding: 0 14px;
 }
 
 .categories-item:hover {
   font-weight: 500;
+}
+
+.nav-categories {
+  position: absolute;
+  top: 60px;
+  margin-left: 14px;
+  padding: 0 5px;
+  background-color: red;
+  border-radius: 4px;
 }

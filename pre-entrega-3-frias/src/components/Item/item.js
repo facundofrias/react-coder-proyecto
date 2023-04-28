@@ -10,9 +10,9 @@ const Item = ({id, category, pictureURL, title, stock}) => {
   }
   return (
     <div className='item-container'>
-      <p>{category}</p>
-      <img className='picture' src={pictureURL} alt="Book picture" />
       <p>{title}</p>
+      <img className='picture' src={pictureURL} alt="Book picture" />
+      <p>{category}</p>
       <button onClick={goToItemDetails}>Ver detalles</button>
       <p>{stock}</p>
     </div>

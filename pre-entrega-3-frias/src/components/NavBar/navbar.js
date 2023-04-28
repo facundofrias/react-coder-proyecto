@@ -31,12 +31,14 @@ const NavBar = () => {
                 <a className="categories menu-item"
                 onClick={showCategoriesMenu}>Categorías</a>
                 { menuOpen && (
-                  <ul className="categories-menu">
-                    <li><Link className="categories-item" to="/category/ciencia_ficcion">Ciencia Ficción</Link></li>
-                    <li><Link className="categories-item" to="/category/fantasia">Fantasía</Link></li>
-                    <li><Link className="categories-item" to="/category/clasicos">Clásicos</Link></li>
-                    <li><Link className="categories-item" to="/category/infantil">Infantil</Link></li>
-                  </ul>
+                  <div className="nav-categories">
+                    <ul className="categories-menu">
+                      <li><Link className="categories-item" to="/category/ciencia_ficcion">Ciencia Ficción</Link></li>
+                      <li><Link className="categories-item" to="/category/fantasia">Fantasía</Link></li>
+                      <li><Link className="categories-item" to="/category/clasicos">Clásicos</Link></li>
+                      <li><Link className="categories-item" to="/category/infantil">Infantil</Link></li>
+                    </ul>
+                  </div>
                   )
                 }
               </div>
