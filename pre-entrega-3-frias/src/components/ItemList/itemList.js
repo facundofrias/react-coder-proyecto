@@ -1,39 +1,43 @@
 import { useEffect, useState } from "react";
-import Item from "../Item/item"
+import Item from "../Item/item";
+import { getItems } from "./getItems";
 
 // Estilos
 import "./itemList.css";
 
+
 const ItemList = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect( () => {
-    const fetchData = setTimeout(() => {
-      
-      fetch( "./products.json")
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.log(error));
+useEffect(() => {
+  const fetchData = async () => {
+    const productsData = await getItems();
+    setProducts(productsData);
+  };
 
-    }, 2000);
-    return () => clearTimeout(fetchData);
-  }, []);
+  fetchData();
+
+  return () => clearTimeout(fetchData);
+}, []);
 
   return (
-      <div className="items-container">
-        {
-          products.map((product) => (
-            <Item 
-            id={product.id}
-            category={`Categoría: ${product.category} `}
-            pictureURL = {product.pictureURL}
-            title = {product.title}
-            stock = {`Stock: ${product.stock}`} />
-            )
+    <div className="items-container">
+      {
+        products.map((product) => (
+          <Item 
+          key={product.id} 
+          id={product.id}
+          title = {product.title}
+          category={product.category}
+          pictureURL = {product.pictureURL}
+          price = {product.price}
+          stock = {product.stock} />
           )
-        }
-      </div>
+        )
+      }
+    </div>
     )
 }
+
 
 export default ItemList;

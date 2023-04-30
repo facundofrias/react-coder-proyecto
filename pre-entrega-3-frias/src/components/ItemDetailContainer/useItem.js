@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
+import { getItems } from "../ItemList/getItems";
 
 const useItem = (itemId) => {
   const [item, setItem] = useState(null);
 
   useEffect(() => {
-    setTimeout(async () => {
-      try {
-        const response = await fetch("/products.json");
-        const data = await response.json();
-        const foundItem = data.find(product => product.id == itemId);
-        setItem(foundItem);
-      } catch (error) {
-        console.log("Error fetching data", error);
-      }
-    }, 2000);
+    const fetchData = async () => {
+      const productsData = await getItems();
+      const foundItem = productsData.find(product => product.id == itemId);
+      setItem(foundItem);
+    };
+
+    fetchData();
+  
+    return () => clearTimeout(fetchData);
   }, [itemId]);
 
   return item;

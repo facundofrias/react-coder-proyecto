@@ -1,21 +1,24 @@
+
 import useCount from "./useCount";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { OrdersCounterContext } from "../ContextPoc/ContextPoc";
 
-const ItemCount = ({stock, initial}) => {
+
+const ItemCount = ({ stock, initial }) => {
   const {counter, increment, decrement} = useCount(initial);
-
-  const [itemCount, setItemCount] = useState(0);
-
-  const onClickHandler = () => {
-    setItemCount(itemCount + counter);
+  const {addOrder} = useContext(OrdersCounterContext);
+  const handlerAddToCart = () => {
+    addOrder();
   }
+
+
   return (
-    <div>
-      <button onClick={decrement}>-</button>
-      <span>{counter}</span>
-      <button onClick={() => increment(stock)}>+</button>
-      <button onClick={() => onClickHandler(counter)}>Agregar al carrito</button>
-    </div>
+      <div className = "item-coun-container">
+        <button onClick={decrement}>-</button>
+        <span>{counter}</span>
+        <button onClick={() => increment(stock)}>+</button>
+        <button onClick={handlerAddToCart}>Agregar al carrito</button>
+      </div>
   )
 }
 

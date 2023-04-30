@@ -3,20 +3,23 @@ import "./cartWidget.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-import { CartCounter } from "./CartCounter";
+import {Link} from "react-router-dom";
+import { OrdersCounter as OrdersCounter } from "./OrdersCounter";
+import { useState } from "react";
 
 // Carrito con valor numérico hardcodeado
-const CartWidget = ({ cant }) => {
-  
+const CartWidget = () => {
+  const [cant, setCant] = useState(0);
+
   return (
-    <a className="cart-icon" href="">
+    <Link className="cart-icon" to="/cart">
     <FontAwesomeIcon icon={faCartShopping} />
-    { cant > 0 && 
-      <CartCounter>
-        {itemCount}
-      </CartCounter>
+    { 
+      <OrdersCounter>
+        {cant}
+      </OrdersCounter>
       }
-    </a>
+    </Link>
   );
 };
 

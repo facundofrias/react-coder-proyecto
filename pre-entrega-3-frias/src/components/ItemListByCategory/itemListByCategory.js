@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NavBar from "../NavBar/navbar";
-import Item from "../Item/item"
+import Item from "../Item/item";
+
+import { getItems } from "../ItemList/getItems" ;
 
 
 const ItemListByCategory = () => {
@@ -9,15 +11,14 @@ const ItemListByCategory = () => {
   const {categoryURL} = useParams();
 
   useEffect(() => {
-    setTimeout(async () => {
-      try {
-        const response = await fetch("/products.json");
-        const data = await response.json();
-        setProducts(data)
-      } catch (error) {
-        console.log("Error fetching data", error);
-      }
-    }, 2000);
+    const fetchData = async () => {
+      const productsData = await getItems();
+      setProducts(productsData);
+    };
+  
+    fetchData();
+  
+    return () => clearTimeout(fetchData);
   }, []);
 
   const productsByCategory = products.filter(
