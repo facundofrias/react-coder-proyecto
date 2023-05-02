@@ -1,20 +1,20 @@
 import ItemCount from "../ItemCount/itemCount";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import "./itemDetail.css"
 
 const ItemDetail = ({ item }) => {
+  const navigate = useNavigate();
 
+  console.log(localStorage.getItem("prevURL"))
   return (
     <div className="item-detail-container">
       <img src={item.pictureURL} alt="Book picture" />
       <p>{item.title}</p>
       <p>{item.description}</p>
       <p>Precio: ${item.price}</p>
-      <ItemCount stock={item.stock} initial={1}/>
-      <button>
-        <Link to={localStorage.getItem("prevURL")}>Volver</Link>
-      </button>
+      <ItemCount item={item} initial={1}/>
+      <button onClick={() => navigate(-1)}>Volver</button>
       <p>{`${item.stock} unidades disponibles. `}</p>
     </div>
   );

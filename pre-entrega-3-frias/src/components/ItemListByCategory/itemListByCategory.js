@@ -24,7 +24,7 @@ const ItemListByCategory = () => {
   const productsByCategory = products.filter(
     (product) => product.categoryURL === categoryURL
   );
-  localStorage.setItem("prevURL", window.location.href);
+  
   return (
     <div className="main">
       <NavBar/>
@@ -40,7 +40,8 @@ const ItemListByCategory = () => {
                 id={product.id}
                 pictureURL={product.pictureURL}
                 title={product.title}
-                stock={`Stock: ${product.stock}`}
+                stock={product.stock}
+                price={product.price}
               />
             ))}
           </div>

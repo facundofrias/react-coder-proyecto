@@ -34,10 +34,13 @@ const Cart = () => {
             quantity={order.quantity}
             totalPrice={order.totalPrice}
             />
+            
           )
           )
         }
-        <p>{cartTotalPrice}</p>
+        <p>Total: ${cartTotalPrice}</p>
+        <button>Comprar carrito</button>
+        <button>Limpiar carrito</button>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import { useState, createContext } from "react";
 
-
 const initialValues = {
   ordersCounter: 0,
 }
@@ -10,7 +9,6 @@ export const OrdersCounterProvider = ({ children }) => {
   const [ordersCounter, setOrdersCounter] = useState(initialValues.ordersCounter);
 
   const addOrder = () => {
-    console.log("llegando")
     setOrdersCounter(ordersCounter + 1);
   }
 

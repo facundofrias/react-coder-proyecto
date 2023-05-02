@@ -1,7 +1,6 @@
 import NavBar from "../NavBar/navbar";
 import ItemListContainer from "../ItemListContainer/itemListContainer";
 
-localStorage.setItem("prevURL", window.location.href);
 
 const Home = () => (
   <div className="main">

@@ -1,0 +1,20 @@
+{
+  "buyer": {
+    "name": "Bruno",
+    "phone": "343123321",
+    "email": "br1@gmail.com"
+  },
+  "items" : [
+    {
+      "name": "Harry Potter",
+      "price": 450,
+      "quantity": 3
+    },
+    {
+      "name": "El señor de los anillos",
+      "price": 600,
+      "quantity": 2
+    }
+  ],
+  "total": 2550
+}

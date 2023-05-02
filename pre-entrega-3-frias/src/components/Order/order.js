@@ -5,6 +5,7 @@ const Order = ({ title, quantity, totalPrice }) => {
       <p>{title}</p>
       <p>{quantity}</p>
       <p>{totalPrice}</p>
+      <button>Eliminar</button>
     </div>
   )
 }
