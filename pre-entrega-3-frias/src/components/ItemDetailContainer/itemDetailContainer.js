@@ -9,7 +9,6 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="main">
-    <NavBar/>
       <div className="item-datail-container">
         {item ? (
           <ItemDetail item={item}/>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Order from "../Order/order"
 import { getCart } from "./getCart";
+import NavBar from "../NavBar/navbar";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -28,7 +29,7 @@ const Cart = () => {
       setNumberItems(ordersData.length);
       let total = 0;
       for (let i = 0; i < ordersData.length; i++) {
-        total += parseFloat(ordersData[i].totalPrice);
+        total += (parseFloat(ordersData[i].price)*parseFloat(ordersData[i].quantity));
       }
       setCartTotalPrice(total);
       setIsLoading(false);
@@ -61,7 +62,22 @@ const Cart = () => {
               ))}
               <p>Total: ${cartTotalPrice}</p>
               <p>Información del Cliente</p>
-              <form onSubmit={handleSubmit}>
+              
+                <button type="submit">Comprar Carrito</button>
+                <button>Limpiar carrito</button>
+            </div>
+          ) : (
+            <p>No hay productos en el carrito</p>
+          )}
+        </div>
+      )}
+    </>
+  );
+}
+
+export default Cart;
+
+{/* <form onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name">Nombre:</label>
                   <input
@@ -92,17 +108,4 @@ const Cart = () => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <button type="submit">Comprar Carrito</button>
-                <button>Limpiar carrito</button>
-              </form>
-            </div>
-          ) : (
-            <p>No hay productos en el carrito</p>
-          )}
-        </div>
-      )}
-    </>
-  );
-}
-
-export default Cart;
+              </form> */}

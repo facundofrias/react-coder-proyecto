@@ -10,6 +10,7 @@ import Home from "./components/home";
 import ItemDetailContainer from "./components/ItemDetailContainer/itemDetailContainer";
 import ItemListByCategory from "./components/ItemListByCategory/itemListByCategory";
 import Cart from "./components/Cart/cart"
+import NavBar from "./components/NavBar/navbar";
 import { useState } from "react";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <div className="App">
         <OrdersCounterProvider>
           <BrowserRouter>
+          <NavBar/>
             <Routes>
               <Route exat path="/" element={<Home />} />
               <Route exat path="/item-details/:itemId" element={<ItemDetailContainer />} />

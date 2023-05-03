@@ -27,7 +27,6 @@ const ItemListByCategory = () => {
   
   return (
     <div className="main">
-      <NavBar/>
       {productsByCategory.length === 0 ? (
         <p>Cargando productos...</p>
       ) : (
