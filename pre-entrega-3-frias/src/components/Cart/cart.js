@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
-import Order from "../Order/order"
+import ItemCart from "./ItemCart";
+import { useContext } from "react";
 import { getCart } from "./getCart";
-import NavBar from "../NavBar/navbar";
+import { db } from "../FirebaseEcommerce/database";
+import { doc, deleteDoc } from "firebase/firestore";
+import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
+
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [numbreItems, setNumberItems] = useState(0)
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    showSuccessAlert();
-  };
-
-  const showSuccessAlert = () => {
-    alert("Compra exitosa");
+  const [isDeleted, setIsDeleted] = useState(false);
+  const {removeItemFromCart} = useContext
+  (ItemsCartCounterContext);
+  const handleDelete = async (id) => {
+    const cartItemDoc = doc(db, "cart", id);
+    try {
+      await deleteDoc(cartItemDoc);
+      setIsDeleted(true);
+      removeItemFromCart();
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    }
   };
 
   useEffect(() => {
@@ -38,8 +42,16 @@ const Cart = () => {
     fetchData();
       
     return () => clearTimeout(fetchData);
-  }, []);
+  }, [isDeleted]);
 
+  const showSuccessAlert = () => {
+    alert("Compra exitosa");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    showSuccessAlert();
+  };
 
   return (
     <>
@@ -51,21 +63,24 @@ const Cart = () => {
       ) : (
         <div className="cart-container">
           {numbreItems > 0 ? (
-            <div className="orders-container">
-              {cart.map((order) => (
-                <Order
-                  key={order.id}
-                  title={order.title}
-                  quantity={order.quantity}
-                  totalPrice={order.totalPrice}
-                />
-              ))}
+            <>
+              <div className="items-cart-container">
+
+                {cart.map((itemCart) => (
+                  <ItemCart
+                    key={itemCart.id}
+                    id={itemCart.id}
+                    title={itemCart.title}
+                    quantity={`Uds.: ${itemCart.quantity}`}
+                    totalPrice={`$${itemCart.quantity*itemCart.price}`}
+                    onDelete={() => handleDelete(itemCart.id)}
+                  />
+                ))}
+              </div>
               <p>Total: ${cartTotalPrice}</p>
-              <p>Información del Cliente</p>
-              
-                <button type="submit">Comprar Carrito</button>
-                <button>Limpiar carrito</button>
-            </div>
+              <button type="submit">Comprar Carrito</button>
+              <button>Limpiar carrito</button>
+            </>
           ) : (
             <p>No hay productos en el carrito</p>
           )}
@@ -76,36 +91,3 @@ const Cart = () => {
 }
 
 export default Cart;
-
-{/* <form onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="name">Nombre:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone">Teléfono:</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-              </form> */}

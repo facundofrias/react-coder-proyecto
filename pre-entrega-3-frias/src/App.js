@@ -3,7 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 // Routes
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { OrdersCounterProvider } from "./components/ContextPoc/ContextPoc";
+import { ItemsCartCounterProvider } from "./components/ContextPoc/ContextPoc";
+import ItemsCartCounter from "./components/CartWidget/ItemsCartCounter"
 
 // Components
 import Home from "./components/home";
@@ -16,7 +17,7 @@ import { useState } from "react";
 function App() {
   return (
       <div className="App">
-        <OrdersCounterProvider>
+        <ItemsCartCounterProvider>
           <BrowserRouter>
           <NavBar/>
             <Routes>
@@ -26,7 +27,7 @@ function App() {
               <Route exat path="/cart" element={<Cart />} />
             </Routes>
           </BrowserRouter>
-        </OrdersCounterProvider> 
+        </ItemsCartCounterProvider> 
       </div>
   );
 }

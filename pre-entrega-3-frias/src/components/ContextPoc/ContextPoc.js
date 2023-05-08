@@ -1,21 +1,37 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
+import { getCart } from "../Cart/getCart"
 
 const initialValues = {
-  ordersCounter: 0,
+  itemsCartCounter: 0,
 }
-export const OrdersCounterContext = createContext(initialValues);
+export const ItemsCartCounterContext = createContext(initialValues);
 
-export const OrdersCounterProvider = ({ children }) => {
-  const [ordersCounter, setOrdersCounter] = useState(initialValues.ordersCounter);
+export const ItemsCartCounterProvider = ({ children }) => {
+  const [itemsCartCounter, setItemsCartCounter] = useState(initialValues.itemsCartCounter);
 
-  const addOrder = () => {
-    setOrdersCounter(ordersCounter + 1);
+  useEffect(() => {
+    const fetchData = async () => {
+      const ordersData = await getCart();
+      setItemsCartCounter(ordersData.length);
+    };
+      
+    fetchData();
+      
+    return () => clearTimeout(fetchData);
+  }, []);
+
+  const addItemToCart = () => {
+    setItemsCartCounter(itemsCartCounter + 1);
+  }
+
+  const removeItemFromCart = () => {
+    setItemsCartCounter(itemsCartCounter - 1);
   }
 
   return (
-    <OrdersCounterContext.Provider 
-      value={{ ordersCounter, addOrder }}>
+    <ItemsCartCounterContext.Provider 
+      value={{ itemsCartCounter, addItemToCart, removeItemFromCart }}>
         {children}
-    </OrdersCounterContext.Provider>
+    </ItemsCartCounterContext.Provider>
   )
 }

@@ -1,14 +1,16 @@
 
 import useCount from "./useCount";
-import { useContext, useState } from "react";
-import { OrdersCounterContext } from "../ContextPoc/ContextPoc";
+import { useContext } from "react";
+import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
 import Swal from "sweetalert2";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../FirebaseEcommerce/database";
 
 
 const ItemCount = ({ item, initial }) => {
   const {counter, increment, decrement} = useCount(initial);
-  const {addOrder} = useContext(OrdersCounterContext);
-  const showAddOrderSuccessAlert = (text) => {
+  const {addItemToCart} = useContext(ItemsCartCounterContext);
+  const showAddItemToCartSuccessAlert = (text) => {
     Swal.fire({
       title: '¡Item agregado!',
       html: `${text.replace(/\n/g, '<br>')}`,
@@ -16,17 +18,40 @@ const ItemCount = ({ item, initial }) => {
     })
   }
 
-  const handlerAddToCart = () => {
-    addOrder();
-    showAddOrderSuccessAlert(`${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`);
+  const showAddItemErrorAlert = () => {
+    Swal.fire({
+      title: '¡Ocurrió un error!',
+      html: 'No se pudo agregar el producto al carrito.',
+      icon: 'error'
+    })
   }
+
+  const handlerAddToCart = async () => {
+    const cartItem = {
+      title: item.title,
+      price: item.price,
+      quantity: counter,
+    };
+    const cartCollection = collection(db, "cart");
+    try {
+      await addDoc(cartCollection, cartItem);
+      showAddItemToCartSuccessAlert(
+        `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
+      );
+    } catch (error) {
+      showAddItemErrorAlert();
+      console.error("Error adding item to cart: ", error);
+    }
+  };
 
   return (
       <div className = "item-coun-container">
         <button onClick={decrement}>-</button>
         <span>{counter}</span>
         <button onClick={() => increment(item.stock)}>+</button>
-        <button onClick={handlerAddToCart}>Agregar al carrito</button>
+        <button onClick={handlerAddToCart}>
+          Agregar al carrito
+        </button>
       </div>
   )
 }
