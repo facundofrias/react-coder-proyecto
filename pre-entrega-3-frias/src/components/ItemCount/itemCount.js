@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../FirebaseEcommerce/database";
 
+import "./itemCount.css";
+
 
 const ItemCount = ({ item, initial }) => {
   const {counter, increment, decrement} = useCount(initial);
@@ -46,11 +48,11 @@ const ItemCount = ({ item, initial }) => {
   };
 
   return (
-      <div className = "item-coun-container">
-        <button onClick={decrement}>-</button>
-        <span>{counter}</span>
-        <button onClick={() => increment(item.stock)}>+</button>
-        <button onClick={handlerAddToCart}>
+      <div className = "item-count-container">
+        <button className="btn item-count__btn" onClick={decrement}>-</button>
+        <span className="item-count__counter">{counter}</span>
+        <button className="item-count__btn btn" onClick={() => increment(item.stock)}>+</button>
+        <button className="item-count__add btn" onClick={handlerAddToCart}>
           Agregar al carrito
         </button>
       </div>

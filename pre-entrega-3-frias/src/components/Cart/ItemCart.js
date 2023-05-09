@@ -1,7 +1,5 @@
 import "./itemCart.css";
 
-
-
 const ItemCart = ({ title, quantity, totalPrice, onDelete }) => {
 
   return (
@@ -9,7 +7,7 @@ const ItemCart = ({ title, quantity, totalPrice, onDelete }) => {
       <p className="item-cart__title">{title}</p>
       <p className="item-cart__quantity">{quantity}</p>
       <p className="item-cart__total-price">{totalPrice}</p>
-      <button onClick={onDelete}>Eliminar</button>
+      <button className="btn btn-danger item-cart__btn-remove" onClick={onDelete}>Eliminar</button>
     </div>
   )
 }

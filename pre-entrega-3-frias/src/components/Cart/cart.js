@@ -8,6 +8,8 @@ import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
 import Swal from "sweetalert2";
 import { cleanCart } from "./cleanCart";
 
+import "./cart.css";
+
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -94,21 +96,28 @@ const Cart = () => {
           {numbreItems > 0 ? (
             <>
               <div className="items-cart-container">
-
+                <div className="item-header">
+                  <p className="header header-title">Título</p>
+                  <p className="header">Unidades</p>
+                  <p className="header">Precio total</p>
+                  <p className="header">Acciones</p>
+                </div>
                 {cart.map((itemCart) => (
                   <ItemCart
                     key={itemCart.id}
                     id={itemCart.id}
                     title={itemCart.title}
-                    quantity={`Uds.: ${itemCart.quantity}`}
+                    quantity={itemCart.quantity}
                     totalPrice={`$${itemCart.quantity*itemCart.price}`}
                     onDelete={() => handleDelete(itemCart.id)}
                   />
                 ))}
               </div>
               <p>Total: ${cartTotalPrice}</p>
-              <button type="submit">Comprar Carrito</button>
-              <button onClick={showCleanCartAlert}>Limpiar carrito</button>
+              <div className="action-btns-container">
+                <button className="btn btn-primary">Comprar Carrito</button>
+                <button className="btn btn-danger" onClick={showCleanCartAlert}>Limpiar carrito</button>
+              </div>
             </>
           ) : (
             <p>No hay productos en el carrito</p>

@@ -8,13 +8,13 @@ const ItemDetail = ({ item }) => {
 
   return (
     <div className="item-detail-container">
-      <img src={item.pictureURL} alt="Book picture" />
-      <p>{item.title}</p>
-      <p>{item.description}</p>
-      <p>Precio: ${item.price}</p>
+      <p className="item-detail__title">{item.title}</p>
+      <img className="item-detail__image" src={item.pictureURL} alt="Book picture" />
+      <p className="item-detail__description">{item.description}</p>
+      <p className="item-detail__price">Precio: ${item.price}</p>
       <ItemCount item={item} initial={1}/>
-      <button onClick={() => navigate(-1)}>Volver</button>
-      <p>{`${item.stock} unidades disponibles. `}</p>
+      <p className="item-detail__stock">{`${item.stock} unidades disponibles. `}</p>
+      <button className="btn" onClick={() => navigate(-1)}>Volver</button>
     </div>
   );
 };

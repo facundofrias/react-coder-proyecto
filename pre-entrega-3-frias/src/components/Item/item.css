@@ -1,4 +1,6 @@
 .item-container {
+  display: grid;
+  justify-items: center;
   margin: 1rem;
   padding: 1rem;
   border: 1px solid black;

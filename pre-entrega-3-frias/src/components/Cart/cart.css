@@ -1,0 +1,15 @@
+.action-btns-container {
+  margin: 5px 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.header {
+  text-align: center;
+  font-weight: 700;
+}
+
+.header-title {
+  justify-self: start;
+}

@@ -1,6 +1,8 @@
 // --- Imports ----
 import logo from "./logo.svg";
 import "./App.css";
+import "./bootstrapBtns.css";
+
 // Routes
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ItemsCartCounterProvider } from "./components/ContextPoc/ContextPoc";

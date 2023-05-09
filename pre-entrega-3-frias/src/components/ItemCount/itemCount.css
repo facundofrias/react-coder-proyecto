@@ -1,0 +1,22 @@
+.item-count-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.item-count__btn {
+  padding: 2px 7px !important;
+  font-weight: 700 !important;
+}
+
+.item-count__add {
+  margin: 0 7px;
+}
+
+.item-count__counter {
+  border: 1px solid black;
+  padding: 0 5px;
+  border-radius: 3px;
+}
