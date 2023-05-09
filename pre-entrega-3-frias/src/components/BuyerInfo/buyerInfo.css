@@ -1,0 +1,49 @@
+.buyer-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buyer-info-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.buyer-info-title {
+  margin-bottom: 20px;
+}
+
+.buyer-info-label {
+  margin-bottom: 10px;
+  align-self: flex-end;
+}
+
+.buyer-info-input {
+  margin-bottom: 10px;
+  margin-left: 7px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.buyer-info-input:focus {
+  outline: none;
+  border-color: #6d9eeb;
+  box-shadow: 0 0 5px #6d9eeb;
+}
+
+.buy-actions-container {
+  margin: 0 auto;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}

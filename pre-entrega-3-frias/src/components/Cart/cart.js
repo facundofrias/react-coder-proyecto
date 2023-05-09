@@ -7,6 +7,7 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
 import Swal from "sweetalert2";
 import { cleanCart } from "./cleanCart";
+import {Link} from "react-router-dom";
 
 import "./cart.css";
 
@@ -115,7 +116,7 @@ const Cart = () => {
               </div>
               <p>Total: ${cartTotalPrice}</p>
               <div className="action-btns-container">
-                <button className="btn btn-primary">Comprar Carrito</button>
+                <Link className="btn btn-primary" to={"/buyer-info"}>Comprar Carrito</Link>
                 <button className="btn btn-danger" onClick={showCleanCartAlert}>Limpiar carrito</button>
               </div>
             </>
