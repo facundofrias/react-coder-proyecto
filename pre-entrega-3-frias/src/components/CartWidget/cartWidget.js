@@ -9,7 +9,7 @@ import { ItemsCartCounter } from "./ItemsCartCounter";
 // Carrito con valor numérico hardcodeado
 const CartWidget = () => {
   return (
-    <Link className="cart-icon" to="/cart">
+    <Link className="menu-item cart-icon" to="/cart">
       <FontAwesomeIcon icon={faCartShopping} />
       { 
         <ItemsCartCounter/>

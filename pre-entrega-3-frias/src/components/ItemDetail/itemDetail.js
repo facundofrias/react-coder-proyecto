@@ -6,7 +6,6 @@ import "./itemDetail.css"
 const ItemDetail = ({ item }) => {
   const navigate = useNavigate();
 
-  console.log(localStorage.getItem("prevURL"))
   return (
     <div className="item-detail-container">
       <img src={item.pictureURL} alt="Book picture" />

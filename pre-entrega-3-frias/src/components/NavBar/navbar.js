@@ -8,10 +8,14 @@ import CartWidget from "../CartWidget/cartWidget";
 // Imágenes
 import logoImg from "../../assets/img/DigitalShop.png";
 const NavBar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isCategoriesHovered, setIsCategoriesHovered] = useState(false);
   
-  const showCategoriesMenu = () => {
-    setMenuOpen(!menuOpen);
+  const handleCategoriesMouseEnter = () => {
+    setIsCategoriesHovered(true);
+  };
+
+  const handleCategoriesMouseLeave = () => {
+    setIsCategoriesHovered(false);
   };
   
   return  <div className="navbar">
@@ -23,14 +27,12 @@ const NavBar = () => {
               </div>
             </Link>
             <div className="nav-menu">
-              <a className="menu-item" href="">Ofertas</a>
-              <a className="menu-item" href="">Vender</a>
-              <a className="menu-item" href="">Ayuda</a>
-              <CartWidget />
-              <div className="categories-container">
-                <a className="categories menu-item"
-                onClick={showCategoriesMenu}>Categorías</a>
-                { menuOpen && (
+              <div className="categories-container"
+                  onMouseEnter={handleCategoriesMouseEnter}
+                  onMouseLeave={handleCategoriesMouseLeave}
+                  >
+                <a className="categories menu-item">Categorías</a>
+                {isCategoriesHovered && (
                   <div className="nav-categories">
                     <ul className="categories-menu">
                       <li><Link className="categories-item" to="/category/ciencia_ficcion">Ciencia Ficción</Link></li>
@@ -39,9 +41,12 @@ const NavBar = () => {
                       <li><Link className="categories-item" to="/category/infantil">Infantil</Link></li>
                     </ul>
                   </div>
-                  )
-                }
+                )}
               </div>
+              <a className="menu-item" href="">Ofertas</a>
+              <a className="menu-item" href="">Vender</a>
+              <a className="menu-item" href="">Ayuda</a>
+              <CartWidget />
             </div>
           </div>
 }

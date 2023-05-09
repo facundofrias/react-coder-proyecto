@@ -38,6 +38,7 @@ const ItemCount = ({ item, initial }) => {
       showAddItemToCartSuccessAlert(
         `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
       );
+      addItemToCart();
     } catch (error) {
       showAddItemErrorAlert();
       console.error("Error adding item to cart: ", error);

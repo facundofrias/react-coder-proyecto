@@ -28,9 +28,13 @@ export const ItemsCartCounterProvider = ({ children }) => {
     setItemsCartCounter(itemsCartCounter - 1);
   }
 
+  const cleanItemCartCounter = () => {
+    setItemsCartCounter(0);
+  }
+
   return (
     <ItemsCartCounterContext.Provider 
-      value={{ itemsCartCounter, addItemToCart, removeItemFromCart }}>
+      value={{ itemsCartCounter, addItemToCart, removeItemFromCart, cleanItemCartCounter }}>
         {children}
     </ItemsCartCounterContext.Provider>
   )

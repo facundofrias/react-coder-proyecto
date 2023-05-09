@@ -5,6 +5,8 @@ import { getCart } from "./getCart";
 import { db } from "../FirebaseEcommerce/database";
 import { doc, deleteDoc } from "firebase/firestore";
 import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
+import Swal from "sweetalert2";
+import { cleanCart } from "./cleanCart";
 
 
 const Cart = () => {
@@ -13,14 +15,23 @@ const Cart = () => {
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleted, setIsDeleted] = useState(false);
-  const {removeItemFromCart} = useContext
-  (ItemsCartCounterContext);
+  const {removeItemFromCart, cleanItemCartCounter} = useContext(ItemsCartCounterContext);
+
   const handleDelete = async (id) => {
     const cartItemDoc = doc(db, "cart", id);
     try {
       await deleteDoc(cartItemDoc);
       setIsDeleted(true);
       removeItemFromCart();
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    }
+  };
+
+  const handleCleanCart = async () => {
+    try {
+      await cleanCart(cleanItemCartCounter);
+      setIsDeleted(true);
     } catch (error) {
       console.error("Error deleting document: ", error);
     }
@@ -53,6 +64,24 @@ const Cart = () => {
     showSuccessAlert();
   };
 
+  const showCleanCartAlert = async () => {
+    Swal.fire({
+      title: '¿Realmente desea limpiar el carrito?',
+      showDenyButton: true,
+      confirmButtonText: 'Si',
+      denyButtonText: 'No',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          handleCleanCart();
+          Swal.fire('El carrito ha sido limpiado.', '', 'success');
+        } catch (error) {
+          console.error('Error eliminando documentos: ', error);
+        }
+      }
+    });
+  };
+
   return (
     <>
       {isLoading ? (
@@ -79,7 +108,7 @@ const Cart = () => {
               </div>
               <p>Total: ${cartTotalPrice}</p>
               <button type="submit">Comprar Carrito</button>
-              <button>Limpiar carrito</button>
+              <button onClick={showCleanCartAlert}>Limpiar carrito</button>
             </>
           ) : (
             <p>No hay productos en el carrito</p>
