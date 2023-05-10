@@ -42,12 +42,12 @@ const Cart = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const ordersData = await getCart();
-      setCart(ordersData);
-      setNumberItems(ordersData.length);
+      const cartData = await getCart();
+      setCart(cartData);
+      setNumberItems(cartData.length);
       let total = 0;
-      for (let i = 0; i < ordersData.length; i++) {
-        total += (parseFloat(ordersData[i].price)*parseFloat(ordersData[i].quantity));
+      for (let i = 0; i < cartData.length; i++) {
+        total += (parseFloat(cartData[i].price)*parseFloat(cartData[i].quantity));
       }
       setCartTotalPrice(total);
       setIsLoading(false);
@@ -57,15 +57,6 @@ const Cart = () => {
       
     return () => clearTimeout(fetchData);
   }, [isDeleted]);
-
-  const showSuccessAlert = () => {
-    alert("Compra exitosa");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    showSuccessAlert();
-  };
 
   const showCleanCartAlert = async () => {
     Swal.fire({

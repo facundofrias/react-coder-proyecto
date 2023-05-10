@@ -30,9 +30,10 @@ const ItemCount = ({ item, initial }) => {
 
   const handlerAddToCart = async () => {
     const cartItem = {
-      title: item.title,
+      itemId: item.id,
       price: item.price,
       quantity: counter,
+      title: item.title,
     };
     const cartCollection = collection(db, "cart");
     try {
