@@ -14,7 +14,7 @@ import "./cart.css";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
-  const [numbreItems, setNumberItems] = useState(0)
+  const [numbreItems, setNumberItems] = useState(0);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleted, setIsDeleted] = useState(false);

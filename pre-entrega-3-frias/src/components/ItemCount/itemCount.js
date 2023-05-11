@@ -5,6 +5,9 @@ import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
 import Swal from "sweetalert2";
 import { addDoc, collection, getDocs} from "firebase/firestore";
 import { db } from "../FirebaseEcommerce/database";
+import getItemstock from "./getItemStock";
+import updateCartItemQuantity from './updateCartItemQuantity';
+
 
 import "./itemCount.css";
 
@@ -35,24 +38,43 @@ const ItemCount = ({ item, initial }) => {
       quantity: counter,
       title: item.title,
     };
+
     const cartCollection =  collection(db, "cart");
     const cartItems = await getDocs(cartCollection);
     const numberOfCartItems = cartItems.size;
     try {
-      if (numberOfCartItems > 0) {
+      if (numberOfCartItems == 0) {
+        await addDoc(cartCollection, cartItem);
+        showAddItemToCartSuccessAlert(
+          `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
+        );
+        addItemToCart();
+      } else {
+        let itemFound = false;
         for (const doc of cartItems.docs) {
           if (doc.data().itemId == item.id) {
-            console.log("llegaaa");
+            itemFound = true;
+            const newQuantity = counter + doc.data().quantity;
+            const stockIsValid = await getItemstock(item.id, newQuantity);
+            if (stockIsValid) {
+              await updateCartItemQuantity(item.id, newQuantity);
+              showAddItemToCartSuccessAlert(
+                `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
+              );
+            } else {
+              Swal.fire('No hay suficiente stock.', '', 'error');
+            }
             break;
           }
+          if (itemFound == false) {
+            await addDoc(cartCollection, cartItem);
+            showAddItemToCartSuccessAlert(
+              `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
+            );
+            addItemToCart();
+          }
         }
-      } else {
-        await addDoc(cartCollection, cartItem);
       }
-      showAddItemToCartSuccessAlert(
-        `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
-      );
-      addItemToCart();
     } catch (error) {
       showAddItemErrorAlert();
       console.error("Error adding item to cart: ", error);
