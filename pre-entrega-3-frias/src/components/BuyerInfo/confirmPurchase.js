@@ -3,7 +3,8 @@ import { db } from "../FirebaseEcommerce/database";
 import Swal from "sweetalert2";
 import { decrementStock } from "./decrementStock";
 
-export const confirmPurchase = (email, name, phone, cartItems) => {
+export const confirmPurchase = async (email, name, phone, cartItems) => {
+  const orderCollection = collection(db, "orders");
   let total = 0;
   
   for (let i = 0; i < cartItems.length; i++) {
@@ -16,12 +17,16 @@ export const confirmPurchase = (email, name, phone, cartItems) => {
     date: new Date(),
     total: total
   }
-  const orderCollection = collection(db, "orders");
-  addDoc(orderCollection, order)
-    .then(() => {
-      cartItems.forEach((item) => {
-        decrementStock(item.itemId, item.quantity);
-      });
-      Swal.fire('Se ha efectuado la compra!.', '', 'success');
-  });
+
+  try {
+    await addDoc(orderCollection, order);
+    for (let i = 0; i < cartItems.length; i++) {
+      await decrementStock(cartItems[i].itemId, cartItems[i].quantity);
+    }
+    await Swal.fire("¡Se ha efectuado la compra!", "", "success");
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+  
 }
+

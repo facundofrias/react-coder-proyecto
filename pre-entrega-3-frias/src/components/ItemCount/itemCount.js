@@ -3,7 +3,7 @@ import useCount from "./useCount";
 import { useContext } from "react";
 import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
 import Swal from "sweetalert2";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs} from "firebase/firestore";
 import { db } from "../FirebaseEcommerce/database";
 
 import "./itemCount.css";
@@ -35,9 +35,20 @@ const ItemCount = ({ item, initial }) => {
       quantity: counter,
       title: item.title,
     };
-    const cartCollection = collection(db, "cart");
+    const cartCollection =  collection(db, "cart");
+    const cartItems = await getDocs(cartCollection);
+    const numberOfCartItems = cartItems.size;
     try {
-      await addDoc(cartCollection, cartItem);
+      if (numberOfCartItems > 0) {
+        for (const doc of cartItems.docs) {
+          if (doc.data().itemId == item.id) {
+            console.log("llegaaa");
+            break;
+          }
+        }
+      } else {
+        await addDoc(cartCollection, cartItem);
+      }
       showAddItemToCartSuccessAlert(
         `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
       );

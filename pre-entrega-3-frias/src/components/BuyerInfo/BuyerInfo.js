@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { getCart } from "../Cart/getCart";
-import { confirmPurchase } from "./confirmPurchase";
+import {confirmPurchase} from "./confirmPurchase";
 import {Link} from "react-router-dom";
+import { cleanCart } from "../Cart/cleanCart";
+import { useContext } from "react";
+import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
 
 const BuyerInfo = () => {
   const [name, setName] = useState('');
@@ -13,6 +16,7 @@ const BuyerInfo = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const {cleanItemCartCounter} = useContext(ItemsCartCounterContext);
 
   useEffect( () => {
     const fetchData = async () => {
@@ -21,12 +25,28 @@ const BuyerInfo = () => {
       setIsLoading(false);
     }
     fetchData();
+    return () => clearTimeout(fetchData);
   },[]);
 
-  const handleCheckout = (event) => {
+  const handleCleanCart = async () => {
+    try {
+      await cleanCart(cleanItemCartCounter);
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    }
+  };
+
+  const handleCheckout = async (event) => {
     event.preventDefault();
     if (name && phone && email) {
-      confirmPurchase(email, name, phone, cartItems);
+      try {
+        await confirmPurchase(email, name, phone, cartItems);
+        await handleCleanCart();
+        navigate("/");
+      } catch (error) {
+        console.error(error);
+        Swal.fire('Hubo un error al procesar la compra.', '', 'error');
+      }
     } else {
       Swal.fire('Por favor completa todos los campos.', '', 'warning');
     }
@@ -82,7 +102,7 @@ const BuyerInfo = () => {
             </label>
             <div className="buy-actions-container">
               <button className="btn btn-success" onClick={handleCheckout}>Confirmar compra</button>
-              <button className="btn" onClick={() => navigate(-1)}>Volver</button>
+              <Link className="btn btn-primary"  to={"/cart"}>Volver</Link>
             </div>
           </form>
         ) : (

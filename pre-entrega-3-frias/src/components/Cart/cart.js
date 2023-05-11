@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import ItemCart from "./ItemCart";
 import { useContext } from "react";
+import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
 import { getCart } from "./getCart";
 import { db } from "../FirebaseEcommerce/database";
 import { doc, deleteDoc } from "firebase/firestore";
-import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
 import Swal from "sweetalert2";
 import { cleanCart } from "./cleanCart";
 import {Link} from "react-router-dom";
@@ -39,24 +39,7 @@ const Cart = () => {
       console.error("Error deleting document: ", error);
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const cartData = await getCart();
-      setCart(cartData);
-      setNumberItems(cartData.length);
-      let total = 0;
-      for (let i = 0; i < cartData.length; i++) {
-        total += (parseFloat(cartData[i].price)*parseFloat(cartData[i].quantity));
-      }
-      setCartTotalPrice(total);
-      setIsLoading(false);
-    };
-      
-    fetchData();
-      
-    return () => clearTimeout(fetchData);
-  }, [isDeleted]);
+  
 
   const showCleanCartAlert = async () => {
     Swal.fire({
@@ -75,6 +58,24 @@ const Cart = () => {
       }
     });
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const cartData = await getCart();
+      setCart(cartData);
+      setNumberItems(cartData.length);
+      let total = 0;
+      for (let i = 0; i < cartData.length; i++) {
+        total += (parseFloat(cartData[i].price)*parseFloat(cartData[i].quantity));
+      }
+      setCartTotalPrice(total);
+      setIsLoading(false);
+    };
+      
+    fetchData();
+    return () => clearTimeout(fetchData);
+  }, [isDeleted]);
+
 
   return (
     <>
