@@ -4,7 +4,7 @@ import ItemListContainer from "../ItemListContainer/itemListContainer";
 
 const Home = () => (
   <div className="main">
-    <ItemListContainer greetings="Te damos la bienvenida - Lista de productos"/>
+    <ItemListContainer greetings="Te damos la bienvenida a Digital Books"/>
   </div>
 );
 

@@ -44,34 +44,39 @@ const ItemCount = ({ item, initial }) => {
     const numberOfCartItems = cartItems.size;
     try {
       if (numberOfCartItems == 0) {
+        console.log("Primer item");
         await addDoc(cartCollection, cartItem);
         showAddItemToCartSuccessAlert(
           `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
         );
         addItemToCart();
       } else {
-        let itemFound = false;
+        let isNewItem = true,
+            newQuantity = 0;
         for (const doc of cartItems.docs) {
           if (doc.data().itemId == item.id) {
-            itemFound = true;
-            const newQuantity = counter + doc.data().quantity;
-            const stockIsValid = await getItemstock(item.id, newQuantity);
-            if (stockIsValid) {
-              await updateCartItemQuantity(item.id, newQuantity);
-              showAddItemToCartSuccessAlert(
-                `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
-              );
-            } else {
-              Swal.fire('No hay suficiente stock.', '', 'error');
-            }
+            console.log("No es un nuevo elemento");
+            newQuantity = counter + doc.data().quantity;
+            isNewItem = false;
             break;
           }
-          if (itemFound == false) {
-            await addDoc(cartCollection, cartItem);
+        }
+        if (isNewItem == true) {
+          console.log("Es un nuevo item");
+          await addDoc(cartCollection, cartItem);
+          showAddItemToCartSuccessAlert(
+            `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
+          );
+          addItemToCart();
+        } else {
+          const stockIsValid = await getItemstock(item.id, newQuantity);
+          if (stockIsValid) {
+            await updateCartItemQuantity(item.id, newQuantity);
             showAddItemToCartSuccessAlert(
               `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
             );
-            addItemToCart();
+          } else {
+            Swal.fire('No hay suficiente stock.', '', 'error');
           }
         }
       }
@@ -86,7 +91,7 @@ const ItemCount = ({ item, initial }) => {
         <button className="btn item-count__btn" onClick={decrement}>-</button>
         <span className="item-count__counter">{counter}</span>
         <button className="item-count__btn btn" onClick={() => increment(item.stock)}>+</button>
-        <button className="item-count__add btn" onClick={handlerAddToCart}>
+        <button className="item-count__add btn btn-success" onClick={handlerAddToCart}>
           Agregar al carrito
         </button>
       </div>

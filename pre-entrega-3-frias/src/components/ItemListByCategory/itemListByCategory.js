@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import NavBar from "../NavBar/navbar";
 import Item from "../Item/item";
+
+import "./itemListByCategory.css";
 
 import { getItems } from "../ItemList/getItems" ;
 
@@ -31,8 +32,7 @@ const ItemListByCategory = () => {
         <p>Cargando productos...</p>
       ) : (
         <>
-          <h3>{`Categoría: ${productsByCategory[0].category}`}</h3>
-          <h4>Productos:</h4>
+          <h3 className="header-category">{`Categoría: ${productsByCategory[0].category}`}</h3>
           <div className="items-container">
             {productsByCategory.map((product) => (
               <Item

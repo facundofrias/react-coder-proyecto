@@ -20,8 +20,10 @@
 }
 
 .brand-name-container {
+  margin-left: 3px;
   display: flex;
   flex-direction: column;
+  font-weight: 700;
 }
 
 .menu-item {
