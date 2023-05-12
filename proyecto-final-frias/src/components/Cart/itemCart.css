@@ -1,0 +1,23 @@
+.item-header,
+.item-cart {
+  margin: 5px auto;
+  padding: 14px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 55% 10% 10% 10% 15%;
+  align-items: center;
+  justify-items: center;
+  width: 50%;
+}
+
+.item-cart__title {
+  justify-self: start;
+}
+
+.item-cart__btn-remove {
+  width: 80px;
+}
+
+.empty-cart-text-container {
+  margin: 14px 0;
+}

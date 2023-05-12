@@ -1,0 +1,77 @@
+.navbar{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.navbar a {
+  color: black;
+}
+
+.brand-container  {
+  display: flex;
+  transition: 170ms ease-in-out;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.brand-name-container {
+  margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+}
+
+.menu-item {
+  font-weight: 500;
+  margin: 2px 14px;
+  transition: 170ms ease-in-out;
+}
+
+.menu-item:hover,
+.brand-container:hover {
+  color: #FC6700;
+}
+
+.categories-container {
+  text-align: left;
+  display: inline;
+  position: relative;
+}
+
+.categories, 
+.categories-item {
+  cursor: pointer;
+}
+
+.categories-item:hover {
+  font-weight: 700;
+  color: #000;
+}
+
+.nav-categories {
+  width: 130px;
+  position: absolute;
+  top:19px;
+  margin: 3px 10px;
+  padding: 2px 5px;
+  background-color: #FC6700;
+  border-radius: 3px;
+}
+
+.categories-container:hover .categories::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  border: 6px solid transparent;
+  border-bottom: 6px solid #FC6700;
+}
+
+.categories-container:hover .nav-categories {
+  display: block;
+}
