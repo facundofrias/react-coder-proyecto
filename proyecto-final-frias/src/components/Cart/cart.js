@@ -8,7 +8,8 @@ import { doc, deleteDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 import { cleanCart } from "./cleanCart";
 import {Link} from "react-router-dom";
-import emptyCartImg from "../../assets/img/empty-cart.png"
+import emptyCartImg from "../../assets/img/empty-cart.png";
+import Loader from "../Loader/loader";
 
 import "./cart.css";
 
@@ -82,8 +83,7 @@ const Cart = () => {
     <>
       {isLoading ? (
         <div className="modal">
-          <div className="spinner"></div>
-          <p className="loading-text">Cargando...</p>
+          <Loader />
         </div>
       ) : (
         <div className="cart-container">

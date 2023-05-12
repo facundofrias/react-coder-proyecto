@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import { cleanCart } from "../Cart/cleanCart";
 import { useContext } from "react";
 import { ItemsCartCounterContext } from "../ContextPoc/ContextPoc";
+import Loader from "../Loader/loader";
 
 const BuyerInfo = () => {
   const [name, setName] = useState('');
@@ -57,7 +58,7 @@ const BuyerInfo = () => {
       {
         isLoading ? (
           <div className="modal">
-            <p className="loading-text">Cargando...</p>
+            <Loader />
           </div>
         ) : (
           <div className="buyer-info-container">
