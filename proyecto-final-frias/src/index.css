@@ -27,3 +27,8 @@ ul, li {
 .loading-text {
   margin: 27px auto;
 }
+
+.search {
+  width: 30vw;
+  padding: 5px;
+}

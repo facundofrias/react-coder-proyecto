@@ -11,6 +11,7 @@ import { getItems } from "../ItemList/getItems" ;
 const ItemListByCategory = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [query, setQuery] = useState("");
   const {categoryURL} = useParams();
 
   useEffect(() => {
@@ -38,14 +39,23 @@ const ItemListByCategory = () => {
       ) : (
         <>
           <h3 className="header-category">{`Categoría: ${productsByCategory[0].category}`}</h3>
+            <div className="search-filter-container">
+              <input className="search"
+                type="text"
+                placeholder="Buscar..."
+                onChange={(e) =>setQuery(e.target.value)}
+              />
+            </div>
           <div className="items-container">
-            {productsByCategory.map((product) => (
-              <Item
-                id={product.id}
-                pictureURL={product.pictureURL}
-                title={product.title}
-                stock={product.stock}
-                price={product.price}
+            {
+              productsByCategory.filter(product=>product.title.toLowerCase().includes(query.toLowerCase())).
+              map((product) => (
+                <Item
+                  id={product.id}
+                  pictureURL={product.pictureURL}
+                  title={product.title}
+                  stock={product.stock}
+                  price={product.price}
               />
             ))}
           </div>

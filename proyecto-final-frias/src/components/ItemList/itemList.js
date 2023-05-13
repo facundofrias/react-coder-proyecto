@@ -9,6 +9,7 @@ import "./itemList.css";
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
+  const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
 useEffect(() => {
@@ -29,24 +30,33 @@ useEffect(() => {
         <div className="modal">
           <Loader />
         </div>
-      ) : (
-        <div className="items-container">
-          {
-            products.map((product) => (
-              <Item 
-              key={product.id} 
-              id={product.id}
-              title = {product.title}
-              category={product.category}
-              pictureURL = {product.pictureURL}
-              price = {product.price}
-              stock = {product.stock} />
-              )
-            )
-          }
-        </div>
-      )
-
+        ) : (
+          <>
+            <div className="search-filter-container">
+              <input className="search"
+                type="text"
+                placeholder="Buscar..."
+                onChange={(e) =>setQuery(e.target.value)}
+              />
+            </div>
+            <div className="items-container">
+              {
+                products.filter(product=>product.title.toLowerCase().includes(query.toLowerCase())).
+                map((product) => (
+                  <Item 
+                  key={product.id} 
+                  id={product.id}
+                  title = {product.title}
+                  category={product.category}
+                  pictureURL = {product.pictureURL}
+                  price = {product.price}
+                  stock = {product.stock} />
+                  )
+                )
+              }
+            </div>
+          </>
+        )
       }
     </>
     )

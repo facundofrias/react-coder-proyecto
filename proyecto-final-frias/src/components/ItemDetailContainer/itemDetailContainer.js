@@ -1,7 +1,7 @@
 import ItemDetail from "../ItemDetail/itemDetail";
 import { useParams } from 'react-router-dom';
-import NavBar from "../NavBar/navbar";
-import useItem from "./useItem"
+import useItem from "./useItem";
+import Loader from "../Loader/loader";
 
 const ItemDetailContainer = () => {
   const { itemId } = useParams();
@@ -13,7 +13,9 @@ const ItemDetailContainer = () => {
         {item ? (
           <ItemDetail item={item}/>
         ) : (
-          <p>Cargando item...</p>
+          <div className="modal">
+            <Loader />
+          </div>
         )}
       </div>
   </div>
