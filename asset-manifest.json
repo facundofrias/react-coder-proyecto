@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/react-coder-proyecto/static/css/main.30ff489c.css",
+    "main.js": "/react-coder-proyecto/static/js/main.e2686dbc.js",
+    "static/js/787.e888b1db.chunk.js": "/react-coder-proyecto/static/js/787.e888b1db.chunk.js",
+    "static/media/DigitalShop.png": "/react-coder-proyecto/static/media/DigitalShop.577210c17cd8f05c43a9.png",
+    "static/media/empty-cart.png": "/react-coder-proyecto/static/media/empty-cart.855ca37cc9e321bc5a58.png",
+    "static/media/cart.svg": "/react-coder-proyecto/static/media/cart.0874b466433dacc5781cb39c34d98f9e.svg",
+    "index.html": "/react-coder-proyecto/index.html",
+    "main.30ff489c.css.map": "/react-coder-proyecto/static/css/main.30ff489c.css.map",
+    "main.e2686dbc.js.map": "/react-coder-proyecto/static/js/main.e2686dbc.js.map",
+    "787.e888b1db.chunk.js.map": "/react-coder-proyecto/static/js/787.e888b1db.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.30ff489c.css",
+    "static/js/main.e2686dbc.js"
+  ]
+}
