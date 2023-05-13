@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+Digital Shop
+Digital Shop es un ecommerce de libros en línea que permite a los usuarios comprar libros digitales desde la comodidad de sus hogares.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Funcionalidades:
 
-## Available Scripts
+- Catálogo de libros: los usuarios pueden explorar una amplia selección de libros digitales disponibles para la venta.
 
-In the project directory, you can run:
+- Carrito de compras: los usuarios pueden agregar productos a un carrito de compras y luego proceder al pago de los productos en el carrito.
 
-### `npm start`
+- Pago seguro: Digital Shop utiliza un sistema de pago seguro para garantizar la protección de la información personal y financiera de los usuarios.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para utilizar Digital Shop, los usuarios simplemente deben seguir estos pasos:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Crear una cuenta en la plataforma.
+2. Explorar el catálogo de libros y seleccionar los productos que deseen comprar.
+3. Agregar los productos seleccionados al carrito de compras.
+4. Proceder al pago de los productos en el carrito, ingresando el nombre, email y teléfono.
 
-### `npm test`
+Autor
+Digital Shop fue desarrollado por Facundo Mariano Frías, un desarrollador apasionado por crear soluciones innovadoras en línea.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+¡Gracias por elegir Digital Shop para comprar libros digitales! Esperamos que disfrutes de la experiencia de compra en nuestra plataforma. Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nuestro equipo de soporte técnico.
 
-### `npm run build`
+Contacto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Email: facu.fr87@gmail.com

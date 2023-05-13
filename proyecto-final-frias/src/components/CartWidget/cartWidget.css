@@ -5,17 +5,17 @@
 }
 
 .cart-img {
-  width: 35px;
+  width: 31px;
 }
 
 .cart-img:hover {
-  width: 37px;
+  width: 33px;
 } 
 
 .orders-counter {
   position: relative;
-  top: -20px;
-  right: 20px;
+  top: -18px;
+  right: 16px;
   border-radius: 15px;
   color: #FC6700;
   font-size: 12px;

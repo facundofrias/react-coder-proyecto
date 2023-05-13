@@ -10,7 +10,6 @@ const getItemstock = async (itemId, newQuantity) => {
   } else {
     return true;
   }
-
 }
 
 export default getItemstock;

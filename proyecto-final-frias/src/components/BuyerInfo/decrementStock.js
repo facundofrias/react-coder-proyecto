@@ -1,4 +1,4 @@
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, writeBatch } from "firebase/firestore";
 import { db } from "../FirebaseEcommerce/database";
 
 export const decrementStock = async (productId, quantity) => {
@@ -6,5 +6,7 @@ export const decrementStock = async (productId, quantity) => {
   const productSnap = await getDoc(productRef);
   const stock = await productSnap.data().stock;
   const newStock = stock - quantity;
-  await updateDoc(productRef, { stock: newStock });
+  const batch = writeBatch(db);
+  batch.update(productRef, { stock: newStock })
+  await batch.commit();
 };

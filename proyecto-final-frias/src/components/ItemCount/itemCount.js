@@ -36,7 +36,7 @@ const ItemCount = ({ item, initial }) => {
       itemId: item.id,
       price: item.price,
       quantity: counter,
-      title: item.title,
+      title: item.title
     };
 
     const cartCollection =  collection(db, "cart");
@@ -44,7 +44,6 @@ const ItemCount = ({ item, initial }) => {
     const numberOfCartItems = cartItems.size;
     try {
       if (numberOfCartItems == 0) {
-        console.log("Primer item");
         await addDoc(cartCollection, cartItem);
         showAddItemToCartSuccessAlert(
           `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
@@ -55,14 +54,12 @@ const ItemCount = ({ item, initial }) => {
             newQuantity = 0;
         for (const doc of cartItems.docs) {
           if (doc.data().itemId == item.id) {
-            console.log("No es un nuevo elemento");
             newQuantity = counter + doc.data().quantity;
             isNewItem = false;
             break;
           }
         }
         if (isNewItem == true) {
-          console.log("Es un nuevo item");
           await addDoc(cartCollection, cartItem);
           showAddItemToCartSuccessAlert(
             `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
@@ -70,7 +67,7 @@ const ItemCount = ({ item, initial }) => {
           addItemToCart();
         } else {
           const stockIsValid = await getItemstock(item.id, newQuantity);
-          if (stockIsValid) {
+          if (stockIsValid) {          
             await updateCartItemQuantity(item.id, newQuantity);
             showAddItemToCartSuccessAlert(
               `${item.title}\nUnidades: ${counter}\nTotal: $${item.price * counter}`
