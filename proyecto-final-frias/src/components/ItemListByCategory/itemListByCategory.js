@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import Item from "../Item/item";
+import Loader from "../Loader/loader";
 
 import "./itemListByCategory.css";
 
@@ -9,12 +10,14 @@ import { getItems } from "../ItemList/getItems" ;
 
 const ItemListByCategory = () => {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const {categoryURL} = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const productsData = await getItems();
       setProducts(productsData);
+      setIsLoading(false);
     };
   
     fetchData();
@@ -27,9 +30,11 @@ const ItemListByCategory = () => {
   );
   
   return (
-    <div className="main">
-      {productsByCategory.length === 0 ? (
-        <p>Cargando productos...</p>
+    <>
+      {isLoading ? (
+        <div className="modal">
+          <Loader />
+        </div>
       ) : (
         <>
           <h3 className="header-category">{`Categoría: ${productsByCategory[0].category}`}</h3>
@@ -46,7 +51,7 @@ const ItemListByCategory = () => {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 
